@@ -82,9 +82,16 @@ button {
 <div id="history"></div>
 
 <script>
-let lastCount = 0; // store last generated count
+let lastCount = 0;
 let lastName = "";
-let searchHistory = []; // store history
+let searchHistory = [];
+
+function maskName(name) {
+  const positions = [2,4,6,8,10,11,12];
+  return name.split('').map((char,index)=>{
+    return positions.includes(index+1) && char !== ' ' ? '*' : char;
+  }).join('');
+}
 
 function showResult() {
   const name = document.getElementById('name').value.trim();
@@ -114,14 +121,13 @@ function showResult() {
   lastCount = count;
   lastName = name;
   document.getElementById('result').innerHTML = message;
-  document.getElementById('nameResult').innerHTML = ""; // clear previous names
+  document.getElementById('nameResult').innerHTML = "";
 
   // Add to history
   searchHistory.push({name: name, count: count, message: message});
   renderHistory();
 }
 
-// Naam generate karne ka function
 function showNames() {
   if(lastCount === 0) {
     alert("Pehle result check karo!");
@@ -147,14 +153,14 @@ function showNames() {
   document.getElementById('nameResult').innerHTML = generated.join('<br>');
 }
 
-// Render search history
 function renderHistory() {
   const historyDiv = document.getElementById('history');
-  historyDiv.innerHTML = ""; // clear
-  searchHistory.slice().reverse().forEach(item => { // show latest on top
+  historyDiv.innerHTML = "";
+  searchHistory.slice().reverse().forEach(item => {
     const div = document.createElement('div');
     div.className = 'historyItem';
-    div.innerHTML = `<strong>${item.name}</strong>: ${item.message}`;
+    const masked = maskName(item.name);
+    div.innerHTML = `<strong>${masked}</strong>: ${item.message}`;
     historyDiv.appendChild(div);
   });
 }
