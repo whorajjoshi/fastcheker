@@ -38,14 +38,20 @@ button {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-#result {
-  margin-top: 30px;
+#result, #nameResult {
+  margin-top: 20px;
   font-size: 22px;
   color: #ff4500;
   font-weight: bold;
   text-align: center;
 }
 
+.nameList {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #8b0000;
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -57,7 +63,15 @@ button {
 
 <div id="result"></div>
 
+<hr style="width:80%; margin:30px 0;">
+
+<p>Kya aapko Karva Chauth karne walon ke naam chahiye?</p>
+<button onclick="showNames()">Dekhe Naam</button>
+<div id="nameResult" class="nameList"></div>
+
 <script>
+let lastCount = 0; // Yeh store karega last generated count
+
 function showResult() {
   const name = document.getElementById('name').value.trim();
   if(name === "") {
@@ -65,15 +79,15 @@ function showResult() {
     return;
   }
 
-  const specialNames = ["Prakash Trivedi","Raj joshi" ,"raj joshi" , "Raj Joshi", "prakash trivedi" , "Prakash trivedi"]; // Special funny names
-
+  const specialNames = ["Prakash Trivedi", "Raj Joshi", "Amit Sharma"]; // Special funny names
   let message = "";
+  let count = 0;
 
   if(specialNames.includes(name)) {
     message = `Bhai ${name}, gin hi nahi pa rahe… itne logon ne aapke liye Karva Chauth kiya! 😜`;
+    count = Math.floor(Math.random() * 10) + 5; // special ke liye 5-14
   } else {
-    // Random number between 3 to 10
-    const count = Math.floor(Math.random() * 8) + 3;
+    count = Math.floor(Math.random() * 8) + 3; // 3-10
     const messages = [
       `Wow! ${count} logon ne aapke liye Karva Chauth kiya! 😍`,
       `Bhai, ${count} logon ne aapke liye fast rakha! 🥳`,
@@ -83,10 +97,37 @@ function showResult() {
     message = messages[Math.floor(Math.random() * messages.length)];
   }
 
+  lastCount = count; // store the count for name generation
   document.getElementById('result').innerHTML = message;
+  document.getElementById('nameResult').innerHTML = ""; // Clear previous names
+}
+
+// Naam generate karne ka function
+function showNames() {
+  if(lastCount === 0) {
+    alert("Pehle result check karo!");
+    return;
+  }
+
+  const namesPool = ["Neha Sharma", "Priya Verma", "Anjali Gupta", "Sakshi Jain", "Riya Singh",
+                     "Pooja Mehra", "Shreya Kapoor", "Divya Chauhan", "Kavita Joshi", "Simran Kaur"];
+  let generated = [];
+
+  for(let i=0; i<lastCount; i++) {
+    let randomName = namesPool[Math.floor(Math.random() * namesPool.length)];
+    
+    // Mask letters 2,3,5,7,8,10
+    const positions = [2,3,5,7,8,10];
+    let maskedName = randomName.split('').map((char, index) => {
+      return positions.includes(index+1) && char !== ' ' ? '*' : char;
+    }).join('');
+    
+    generated.push(maskedName);
+  }
+
+  document.getElementById('nameResult').innerHTML = generated.join('<br>');
 }
 </script>
 
 </body>
 </html>
-
