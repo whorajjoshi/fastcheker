@@ -121,25 +121,30 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
   background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically & horizontally */
+  padding: 16px; /* Prevent touching edges on mobile */
 }
 .modal-content {
   background-color: #fff;
-  margin: 10% auto;
   padding: 20px;
   border-radius: 12px;
   max-width: 400px;
+  width: 100%;
   position: relative;
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 .modal-content h2 {
   margin-bottom: 10px;
   color: var(--primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 .modal-content p {
   color: #444;
@@ -179,7 +184,7 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
 
   <section class="grid" id="cardGrid">
 
-    <!-- Example Card -->
+    <!-- KIWI Yes Bank Rupay Card -->
     <div class="card" data-name="KIWI Yes Bank Rupay" data-fee="0" data-rating="5">
       <div class="card-body">
         <div class="card-title"><h3>KIWI Yes Bank Rupay Credit Card</h3><span class="rating">★★★★★</span></div>
@@ -199,137 +204,101 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
         </div>
       </div>
     </div>
-<!-- 🆕 START: Axis Bank Credit Card -->
-<div class="card" data-name="Axis Bank Credit Card" data-fee="0" data-rating="5">
-  <div class="card-body">
 
-    <!-- Title and Rating -->
-    <div class="card-title">
-      <h3>Axis Bank Credit Card</h3>
-      <span class="rating">★★★★★</span>
+    <!-- Axis Bank Credit Card -->
+    <div class="card" data-name="Axis Bank Credit Card" data-fee="0" data-rating="5">
+      <div class="card-body">
+        <div class="card-title"><h3>Axis Bank Credit Card</h3><span class="rating">★★★★★</span></div>
+        <div class="card-meta">Earn Cashback & Enjoy Exclusive Offers<br>Eligibility: Salaried/Self-employed, Age 21-60</div>
+        <div class="tag-row">
+          <span class="tag">Cashback</span>
+          <span class="tag">Food Offers</span>
+          <span class="tag">Lounge Access</span>
+        </div>
+        <div class="fee">Joining Fee ₹499 | Annual Fee ₹499(Differ with variants)</div>
+        <div class="action-row">
+          <button class="know-btn"
+            data-title="Axis Bank Credit Card"
+            data-benefits="✔️ Cashback on dining & groceries<br>✔️ Complimentary lounge access<br>✔️ Fuel surcharge waiver<br>✔️ Reward points on every spend"
+            data-eligibility="✔️ Age: 21 to 60 years<br>✔️ Employment: Salaried/Self-employed<br>✔️ Minimum Income: ₹15,000 per month<br>✔️ Good CIBIL Score"
+          >Know More</button>
+          <a href="#" class="apply-btn">Apply Now</a>
+        </div>
+      </div>
     </div>
 
-    <!-- Short Description -->
-    <div class="card-meta">
-      Earn Cashback & Enjoy Exclusive Offers<br>
-      Eligibility: Salaried/Self-employed, Age 21-60
-    </div>
-
-    <!-- Tags -->
-    <div class="tag-row">
-      <span class="tag">Cashback</span>
-      <span class="tag">Food Offers</span>
-      <span class="tag">Lounge Access</span>
-    </div>
-
-    <!-- Fee Info -->
-    <div class="fee">Joining Fee ₹499 | Annual Fee ₹499(Differ with variants)</div>
-
-    <!-- Buttons (Know More + Apply Now) -->
-    <div class="action-row">
-      <button class="know-btn"
-        data-title="Axis Bank Credit Card"
-        data-benefits="✔️ Earn Cashback on Every Purchase<br>🍕 Up to 50% OFF on Online Food Orders<br>🎉 Welcome Benefits Worth ₹600<br>✔️ Save Big on Shows, Groceries & Bills<br>✈️ FREE Airport Lounge Access"
-        data-eligibility="✔️ Employment: Salaried or Self-employed<br>✔️ Age: 21-60 years<br>✔️ CIBIL Score: 740+<br>✔️ Income: Salaried with good CIBIL - Annual Income above X lakhs<br>✔️ Salaried with zero CIBIL - Annual Income above X lakhs<br>✔️ Self-employed with good CIBIL - Annual Income above 3.6 lakhs<br>✔️ Self-employed with zero CIBIL - Not eligible<br>✔️ Documents: Aadhaar Card, PAN Card, Income Proof"
-      >Know More</button>
-
-      <a href="https://leads.banksathi.com/?h=RHdCT2JyeXU3eWpXczBETnZkeVhGUT09" class="apply-btn" target="_blank">Apply Now</a>
-    </div>
-
-  </div>
-</div>
-<!-- 🆕 END: Axis Bank Credit Card -->
-<!-- 🆕 START: HDFC Credit Card -->
-<div class="card" data-name="HDFC Credit Card" data-fee="0" data-rating="5">
-  <div class="card-body">
-
-    <!-- Title and Rating -->
-    <div class="card-title">
-      <h3>HDFC Credit Card</h3>
-      <span class="rating">★★★★★</span>
-    </div>
-
-    <!-- Short Description -->
-    <div class="card-meta">
-      Free Amazon Prime & More<br>
-      Eligibility: Salaried/Self-employed, Age 21-60/65
-    </div>
-
-    <!-- Tags -->
-    <div class="tag-row">
-      <span class="tag">Cashback</span>
-      <span class="tag">Gift Voucher</span>
-      <span class="tag">Lounge Access</span>
-    </div>
-
-    <!-- Fee Info -->
-    <div class="fee">Joining Fee ₹500 | Annual Fee ₹500 (+Applicable Taxes)</div>
-
-    <!-- Buttons (Know More + Apply Now) -->
-    <div class="action-row">
-      <button class="know-btn"
-        data-title="HDFC Credit Card"
-        data-benefits="⚡ Free 1-Year Membership of Amazon Prime & more!<br>⚡ Airport Lounge Access<br>⚡ Exciting Gift Voucher<br>⚡ Discount on Grocery, Movies, & Shopping<br>⚡ Cashback On Every Purchase"
-        data-eligibility="✔️ Age: 21-60 years (salaried), 65 years (self-employed)<br>✔️ Minimum Income: Rs.20,000/month (salaried), Lakhs per annum (self-employed)<br>✔️ Applicants must have a regular source of income<br>✔️ Documents: PAN card, Voter ID, Passport, Aadhaar Card, Latest Utility Bills (within 3 months), Bank Statement (last 6 months), Salary slips (last 3 months)"
-      >Know More</button>
-
-      <a href="https://leads.banksathi.com/?h=NmpVTmhVV3M1N29HYmJBTURIUnVSUT09" class="apply-btn" target="_blank">Apply Now</a>
-    </div>
-
-  </div>
-</div>
-<!-- 🆕 END: HDFC Credit Card -->
-
+    <!-- Add more cards as needed -->
 
   </section>
+
+  <p class="note">Note: Terms & conditions apply. Offers may vary.</p>
+
 </main>
 
 <footer>
   <div class="footer-container">
-    <p>Need help? <a href="https://wa.me/919610841436" class="chat-btn" target="_blank">Chat with us on WhatsApp</a></p>
-    <div class="copyright">© 2025 Credit Line. All Rights Reserved.</div>
+    <a href="#" class="chat-btn">Chat with us</a>
+    <p class="copyright">&copy; 2025 Credit Line</p>
   </div>
 </footer>
 
-<!-- Popup Modal -->
-<div class="modal" id="infoModal">
+<!-- Modal -->
+<div id="cardModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2 id="modalTitle"></h2>
-    <p><strong>Benefits:</strong><br><span id="modalBenefits"></span></p>
-    <p><strong>Eligibility:</strong><br><span id="modalEligibility"></span></p>
+    <h2 id="modalTitle">Card Name</h2>
+    <p id="modalBenefits">Benefits...</p>
+    <p id="modalEligibility">Eligibility...</p>
   </div>
 </div>
 
 <script>
-const searchInput = document.getElementById('searchInput');
-const cardGrid = document.getElementById('cardGrid');
-searchInput.addEventListener('input', ()=>{
-  const filter = searchInput.value.toLowerCase();
-  const cards = cardGrid.querySelectorAll('.card');
-  cards.forEach(card=>{
-    const name = card.dataset.name.toLowerCase();
-    card.style.display = name.includes(filter) ? 'flex' : 'none';
-  });
-});
-
-// Popup Modal Logic
-const modal = document.getElementById('infoModal');
+// Modal functionality
+const modal = document.getElementById('cardModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalBenefits = document.getElementById('modalBenefits');
 const modalEligibility = document.getElementById('modalEligibility');
-const closeBtn = document.querySelector('.close');
+const closeModal = document.querySelector('.close');
 
-document.querySelectorAll('.know-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    modalTitle.textContent = btn.dataset.title;
+document.querySelectorAll('.know-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    modalTitle.innerHTML = btn.dataset.title;
     modalBenefits.innerHTML = btn.dataset.benefits;
     modalEligibility.innerHTML = btn.dataset.eligibility;
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
   });
 });
-closeBtn.onclick = ()=>{ modal.style.display = 'none'; }
-window.onclick = (e)=>{ if(e.target==modal) modal.style.display='none'; }
+
+closeModal.addEventListener('click', () => modal.style.display = 'none');
+window.addEventListener('click', e => {
+  if(e.target == modal) modal.style.display = 'none';
+});
+
+// Optional: Filter & Sort
+const searchInput = document.getElementById('searchInput');
+const sortSelect = document.getElementById('sortSelect');
+const cardGrid = document.getElementById('cardGrid');
+
+searchInput.addEventListener('input', () => filterCards());
+sortSelect.addEventListener('change', () => sortCards());
+
+function filterCards() {
+  const query = searchInput.value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    card.style.display = name.includes(query) ? 'flex' : 'none';
+  });
+}
+
+function sortCards() {
+  const option = sortSelect.value;
+  const cards = Array.from(cardGrid.children);
+  if(option === 'low') cards.sort((a,b) => parseInt(a.dataset.fee) - parseInt(b.dataset.fee));
+  else if(option === 'high') cards.sort((a,b) => parseInt(b.dataset.fee) - parseInt(a.dataset.fee));
+  else if(option === 'rating') cards.sort((a,b) => parseInt(b.dataset.rating) - parseInt(a.dataset.rating));
+  cardGrid.innerHTML = '';
+  cards.forEach(card => cardGrid.appendChild(card));
+}
 </script>
 
 </body>
