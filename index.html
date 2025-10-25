@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Credit Cards — Credit Line</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --primary:#6610f2;
@@ -52,8 +51,21 @@ body{font-family:'Inter',sans-serif; background:var(--page-bg); color:#222; -web
 }
 
 .container{max-width:1100px;margin:24px auto;padding:0 16px 60px;}
-.filters{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:16px;}
-.filters input, .filters select{padding:8px 10px; border-radius:8px; border:1px solid #ccc; font-size:0.9rem;}
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:space-between;
+  margin-bottom:16px;
+}
+.filters input, .filters select{
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:0.9rem;
+  flex:1;
+  min-width:140px;
+}
 .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px;}
 .card{background:var(--card-bg); border-radius:var(--radius); padding:14px; box-shadow:0 6px 20px rgba(20,20,40,0.06); display:flex; flex-direction:column; transition:transform .18s ease,box-shadow .18s ease;}
 .card:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(20,20,40,0.09);}
@@ -99,17 +111,12 @@ body{font-family:'Inter',sans-serif; background:var(--page-bg); color:#222; -web
 }
 
 .note{text-align:center; color:var(--muted); margin-top:18px; font-size:0.9rem;}
-@media(max-width:520px){
-  .card{padding:12px;}
-  .action-row{flex-direction:row;}
-}
 
 /* Footer */
 footer{background:#111; color:#fff; padding:20px 16px; text-align:center;}
 footer .footer-container{max-width:1100px;margin:auto;}
-footer a{color:#fff; text-decoration:none;}
-footer .chat-btn{display:inline-block; background:linear-gradient(90deg,#0d6efd,#6610f2); padding:10px 14px; border-radius:10px; font-weight:700; margin-top:10px; transition:opacity .2s ease;}
-footer .chat-btn:hover{opacity:0.9;}
+footer a.chat-btn{display:inline-block; background:linear-gradient(90deg,#0d6efd,#6610f2); padding:10px 14px; border-radius:10px; font-weight:700; margin-top:6px; transition:opacity .2s ease; text-decoration:none; color:#fff;}
+footer a.chat-btn:hover{opacity:0.9;}
 footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
 
 /* Modal */
@@ -121,30 +128,25 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
   top: 0;
   width: 100%;
   height: 100%;
+  overflow: auto;
   background-color: rgba(0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Center vertically & horizontally */
-  padding: 16px; /* Prevent touching edges on mobile */
 }
 .modal-content {
   background-color: #fff;
+  margin: 10% auto;
   padding: 20px;
   border-radius: 12px;
   max-width: 400px;
-  width: 100%;
   position: relative;
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  animation: slideDown 0.3s ease;
-}
-@keyframes slideDown {
-  0% { transform: translateY(-50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
 }
 .modal-content h2 {
   margin-bottom: 10px;
   color: var(--primary);
-  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.1rem;
 }
 .modal-content p {
   color: #444;
@@ -161,6 +163,12 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
   cursor: pointer;
 }
 .close:hover {color: var(--primary);}
+
+@media(max-width:520px){
+  .card{padding:12px;}
+  .action-row{flex-direction:row;}
+  .filters{flex-direction:column; align-items:stretch;}
+}
 </style>
 </head>
 <body>
@@ -171,7 +179,6 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
 </div>
 
 <main class="container">
-
   <div class="filters">
     <input type="text" id="searchInput" placeholder="Search by card name...">
     <select id="sortSelect">
@@ -183,62 +190,72 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
   </div>
 
   <section class="grid" id="cardGrid">
-
-    <!-- KIWI Yes Bank Rupay Card -->
-    <div class="card" data-name="KIWI Yes Bank Rupay" data-fee="0" data-rating="5">
-      <div class="card-body">
-        <div class="card-title"><h3>KIWI Yes Bank Rupay Credit Card</h3><span class="rating">★★★★★</span></div>
-        <div class="card-meta">
-          Lifetime Free Credit Card – No joining or annual fees<br>
-          Eligibility: Age 25–60, Salaried Individuals, Min Salary ₹25,000, CIBIL 720+
-        </div>
-        <div class="tag-row"><span class="tag">Lifetime Free</span></div>
-        <div class="fee">Joining Fee ₹0 | Annual Fee ₹0</div>
-        <div class="action-row">
-          <button class="know-btn"
-            data-title="KIWI Yes Bank Rupay Credit Card"
-            data-benefits="✔️ Lifetime Free Credit Card – No joining or annual fees<br>✔️ Exclusive rewards & cashback offers<br>✔️ No hidden charges<br>✔️ Easy digital application"
-            data-eligibility="✔️ Age: 25 to 60 years<br>✔️ Employment: Salaried Individuals<br>✔️ Minimum Salary: ₹25,000 per month<br>✔️ CIBIL Score: 720 or above<br>✔️ Job Stability: 9+ months in current job"
-          >Know More</button>
-          <a href="https://leads.banksathi.com/?h=bm00ZFlqNm9aTGh6NkpxV2ZoMGFMZz09" class="apply-btn" target="_blank">Apply Now</a>
-        </div>
-      </div>
-    </div>
-
     <!-- Axis Bank Credit Card -->
-    <div class="card" data-name="Axis Bank Credit Card" data-fee="0" data-rating="5">
+    <div class="card" data-name="Axis Bank Credit Card" data-fee="499" data-rating="5">
       <div class="card-body">
-        <div class="card-title"><h3>Axis Bank Credit Card</h3><span class="rating">★★★★★</span></div>
-        <div class="card-meta">Earn Cashback & Enjoy Exclusive Offers<br>Eligibility: Salaried/Self-employed, Age 21-60</div>
+        <div class="card-title">
+          <h3>Axis Bank Credit Card</h3>
+          <span class="rating">★★★★★</span>
+        </div>
+        <div class="card-meta">
+          Earn Cashback & Exclusive Offers<br>
+          Eligibility: Salaried/Self-employed, Age 21-60
+        </div>
         <div class="tag-row">
           <span class="tag">Cashback</span>
           <span class="tag">Food Offers</span>
           <span class="tag">Lounge Access</span>
         </div>
-        <div class="fee">Joining Fee ₹499 | Annual Fee ₹499(Differ with variants)</div>
+        <div class="fee">Joining Fee ₹499 | Annual Fee ₹499</div>
         <div class="action-row">
           <button class="know-btn"
             data-title="Axis Bank Credit Card"
-            data-benefits="✔️ Cashback on dining & groceries<br>✔️ Complimentary lounge access<br>✔️ Fuel surcharge waiver<br>✔️ Reward points on every spend"
-            data-eligibility="✔️ Age: 21 to 60 years<br>✔️ Employment: Salaried/Self-employed<br>✔️ Minimum Income: ₹15,000 per month<br>✔️ Good CIBIL Score"
+            data-benefits="✔️ Earn Cashback on Every Purchase<br>🍕 Up to 50% OFF on Online Food Orders<br>🎉 Welcome Benefits Worth ₹600<br>✔️ Save Big on Shows, Groceries & Bills<br>✈️ FREE Airport Lounge Access"
+            data-eligibility="✔️ Employment: Salaried or Self-employed<br>✔️ Age: 21-60 years<br>✔️ CIBIL Score: 740+<br>✔️ Income: Salaried with good CIBIL - Annual Income above X lakhs<br>✔️ Salaried with zero CIBIL - Annual Income above X lakhs<br>✔️ Self-employed with good CIBIL - Annual Income above 3.6 lakhs<br>✔️ Self-employed with zero CIBIL - Not eligible<br>✔️ Documents: Aadhaar Card, PAN Card, Income Proof"
           >Know More</button>
-          <a href="#" class="apply-btn">Apply Now</a>
+          <a href="https://leads.banksathi.com/?h=RHdCT2JyeXU3eWpXczBETnZkeVhGUT09" class="apply-btn" target="_blank">Apply Now</a>
         </div>
       </div>
     </div>
 
-    <!-- Add more cards as needed -->
+    <!-- HDFC Credit Card -->
+    <div class="card" data-name="HDFC Credit Card" data-fee="500" data-rating="5">
+      <div class="card-body">
+        <div class="card-title">
+          <h3>HDFC Credit Card</h3>
+          <span class="rating">★★★★★</span>
+        </div>
+        <div class="card-meta">
+          Free Amazon Prime & More<br>
+          Eligibility: Salaried/Self-employed, Age 21-60/65
+        </div>
+        <div class="tag-row">
+          <span class="tag">Cashback</span>
+          <span class="tag">Gift Voucher</span>
+          <span class="tag">Lounge Access</span>
+        </div>
+        <div class="fee">Joining Fee ₹500 | Annual Fee ₹500</div>
+        <div class="action-row">
+          <button class="know-btn"
+            data-title="HDFC Credit Card"
+            data-benefits="✔️ 5% Cashback on Amazon<br>🎁 Get Gift Vouchers Worth ₹700<br>✈️ Lounge Access<br>🎉 Welcome Offer Worth ₹500"
+            data-eligibility="✔️ Employment: Salaried or Self-employed<br>✔️ Age: 21-60 years<br>✔️ Documents: Aadhaar, PAN, Income Proof"
+          >Know More</button>
+          <a href="https://leads.banksathi.com/?h=RHdCT2JyeXU3eWpXczBETnZkeVhGUT09" class="apply-btn" target="_blank">Apply Now</a>
+        </div>
+      </div>
+    </div>
 
   </section>
 
-  <p class="note">Note: Terms & conditions apply. Offers may vary.</p>
-
+  <div class="note">All credit card benefits and eligibility are subject to bank verification and approval.</div>
 </main>
 
 <footer>
   <div class="footer-container">
-    <a href="#" class="chat-btn">Chat with us</a>
-    <p class="copyright">&copy; 2025 Credit Line</p>
+    <p>Need help?
+    <a href="https://api.whatsapp.com/send?phone=+919610841436" target="_blank" class="chat-btn">Chat on WhatsApp</p></a>
+    <div class="copyright">© 2025 Credit Line. All Rights Reserved.</div>
   </div>
 </footer>
 
@@ -246,59 +263,50 @@ footer .copyright{margin-top:12px; font-size:0.85rem; color:#888;}
 <div id="cardModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2 id="modalTitle">Card Name</h2>
-    <p id="modalBenefits">Benefits...</p>
-    <p id="modalEligibility">Eligibility...</p>
+    <h2 id="modalTitle">Card Title</h2>
+    <p id="modalBenefits"></p>
+    <p id="modalEligibility"></p>
   </div>
 </div>
 
 <script>
-// Modal functionality
+// Modal
 const modal = document.getElementById('cardModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalBenefits = document.getElementById('modalBenefits');
 const modalEligibility = document.getElementById('modalEligibility');
-const closeModal = document.querySelector('.close');
-
-document.querySelectorAll('.know-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
+document.querySelectorAll('.know-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
     modalTitle.innerHTML = btn.dataset.title;
-    modalBenefits.innerHTML = btn.dataset.benefits;
-    modalEligibility.innerHTML = btn.dataset.eligibility;
-    modal.style.display = 'flex';
+    modalBenefits.innerHTML = btn.dataset.benefits.replace(/\n/g,'<br>');
+    modalEligibility.innerHTML = btn.dataset.eligibility.replace(/\n/g,'<br>');
+    modal.style.display='block';
   });
 });
+document.querySelector('.close').onclick = ()=>{ modal.style.display='none'; }
+window.onclick = e=>{ if(e.target==modal) modal.style.display='none'; }
 
-closeModal.addEventListener('click', () => modal.style.display = 'none');
-window.addEventListener('click', e => {
-  if(e.target == modal) modal.style.display = 'none';
-});
-
-// Optional: Filter & Sort
+// Search & Sort
 const searchInput = document.getElementById('searchInput');
 const sortSelect = document.getElementById('sortSelect');
-const cardGrid = document.getElementById('cardGrid');
+const cards = document.querySelectorAll('.card');
 
-searchInput.addEventListener('input', () => filterCards());
-sortSelect.addEventListener('change', () => sortCards());
-
-function filterCards() {
-  const query = searchInput.value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card => {
-    const name = card.dataset.name.toLowerCase();
-    card.style.display = name.includes(query) ? 'flex' : 'none';
+searchInput.addEventListener('input', ()=>{
+  const val = searchInput.value.toLowerCase();
+  cards.forEach(card=>{
+    card.style.display = card.dataset.name.toLowerCase().includes(val)? 'flex':'none';
   });
-}
+});
 
-function sortCards() {
-  const option = sortSelect.value;
-  const cards = Array.from(cardGrid.children);
-  if(option === 'low') cards.sort((a,b) => parseInt(a.dataset.fee) - parseInt(b.dataset.fee));
-  else if(option === 'high') cards.sort((a,b) => parseInt(b.dataset.fee) - parseInt(a.dataset.fee));
-  else if(option === 'rating') cards.sort((a,b) => parseInt(b.dataset.rating) - parseInt(a.dataset.rating));
-  cardGrid.innerHTML = '';
-  cards.forEach(card => cardGrid.appendChild(card));
-}
+sortSelect.addEventListener('change', ()=>{
+  const grid = document.getElementById('cardGrid');
+  let arr = Array.from(cards);
+  const val = sortSelect.value;
+  if(val==='low') arr.sort((a,b)=>parseInt(a.dataset.fee)-parseInt(b.dataset.fee));
+  else if(val==='high') arr.sort((a,b)=>parseInt(b.dataset.fee)-parseInt(a.dataset.fee));
+  else if(val==='rating') arr.sort((a,b)=>parseInt(b.dataset.rating)-parseInt(a.dataset.rating));
+  arr.forEach(c=>grid.appendChild(c));
+});
 </script>
 
 </body>
